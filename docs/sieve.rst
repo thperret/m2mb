@@ -13,8 +13,10 @@ the mail by using the ``discard`` sieve command.
 
 **NB**: if no rules match the mail, the default command is to ``keep`` the mail
 which will be send to the ``default_channel``.
+
 **NB2**: channels must be lower case, without non-ascii characters (remove them
 if any) and spaces replaced by hyphens ``-``.
+
 **NB3**: sieve standard requires that files are in dos specification ending
 lines (``CRLF`` or ``\r\r``). For information, Mac ending lines are ``CR`` (or
 ``\r``) and unix ending lines are ``LF`` (or ``\n``).
@@ -36,7 +38,7 @@ mails to be send to the default channel.
 ``fileinto``
 ++++++++++++
 
-In ``m2mb`` the ``fileinto`` command is used to send the message to a specidig
+In ``m2mb`` the ``fileinto`` command is used to send the message to a specific
 channel. The channel *must* exists (or the sending will silently fail).
 
 ``redirect``
@@ -65,7 +67,7 @@ destinated to a mail address containing ``user1`` or ``user2`` and will send a
 direct message to the corresponding user. If none of the previous rules match,
 the message will be send to the default channel.
 
-.. code:: sieve
+.. code:: text
 
     require "fileinto";
 
@@ -88,7 +90,7 @@ at the end of the file. You should also add ``stop`` statements after all other
 commands otherwise the ``discard`` statement will also be interpreted (this has
 an undefined behaviour in this implementation).
 
-.. code:: sieve
+.. code:: text
 
     require "fileinto";
 

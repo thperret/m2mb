@@ -10,8 +10,8 @@ The ``M2MBServer`` class inheritates from the ``SMTP`` class of the ``aiosmtpd``
 module requiring a ``webhook_url`` and optionally loads a file containing
 :doc:`sieve <sieve>` rules.
 You can also provide a ``default_channel`` which will be used if no rules match
-or are provided, a ``username`` which will overwrite[1]_ the displayed name in
-message send and a ``icon_url`` parameter which will overwrite[1]_ the displayed
+or are provided, a ``username`` which will overwrite [1]_ the displayed name in
+message send and a ``icon_url`` parameter which will overwrite [1]_ the displayed
 icon in message send.
 
 The ``M2MBHandler`` class inheritates from the ``AsyncMessage`` class of the
