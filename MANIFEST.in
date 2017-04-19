@@ -1,0 +1,6 @@
+include *.py MANIFEST.in
+include README.rst
+include COPYING
+include LICENSE
+include m2mb/tests/mails/*.msg
+include m2mb/tests/sieve/*.sieve
