@@ -8,7 +8,7 @@ fi
 cmd_options=""
 
 if [ -n "$DEFAULT_CHANNEL" ]; then
-    cmd_options="$cmd_options --default-channel $DEFAULT_CHANNEL"
+    cmd_options="$cmd_options --default_channel $DEFAULT_CHANNEL"
 fi
 
 if [ -n "$USERNAME" ]; then
