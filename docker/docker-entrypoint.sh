@@ -27,5 +27,6 @@ if [ -n "$DEBUG_LEVEL" ]; then
     for i in $(seq 1 $DEBUG_LEVEL); do
         cmd_options="$cmd_options -d"
     done
+fi
 
-    m2mbd $(hostname -i) 25 $WEBHOOK_URL $cmd_options
+m2mbd $(hostname -i) 25 $WEBHOOK_URL $cmd_options
