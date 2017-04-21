@@ -16,7 +16,7 @@ if [ -n "$USERNAME" ]; then
 fi
 
 if [ -n "$ICON_URL" ]; then
-    cmd_options="$cmd_options --icon_url $USERNAME"
+    cmd_options="$cmd_options --icon_url $ICON_URL"
 fi
 
 if [ -e /rules.sieve ]; then
