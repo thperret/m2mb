@@ -26,6 +26,7 @@ Python 3.""",
         "aiosmtpd==1.0a5",
         "requests",
         "sifter==0.1",
+        "html2text",
         ],
     dependency_links=[
         "git+https://github.com/thperret/aiosmtpd.git@auth#egg=aiosmtpd-1.0a5+auth",

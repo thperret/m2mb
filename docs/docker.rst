@@ -36,7 +36,15 @@ Environment variables
     url used to displayed icon on messages
     *defaults to Slack/Mattermost default webhook icon*
 
-.. [1] Username and icon overwrite must be allowed by Slack/Mattermost
+``NO_HTML2TEXT``
+    if the mail is formatted as html, don't try to convert it to markdown
+    formatted text
+
+``NO_HTML2TEXT``
+    if the mail is formatted as html and html2text is not disabled, do not
+    ignore html tables when formatting html to Markdown text
+
+    .. [1] Username and icon overwrite must be allowed by Slack/Mattermost
     configuration
 
 Volume definition

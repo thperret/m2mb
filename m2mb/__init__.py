@@ -18,4 +18,4 @@ m2mb is a smtp server that send mail to a Slack/Mattermost compatible
 webhook. It doesn't send mail at all but only send the bmail body in form of a
 Slack/Mattermost post."""
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"

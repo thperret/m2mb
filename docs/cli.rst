@@ -51,6 +51,14 @@ Optional parameters
     url used to displayed icon on messages
     *defaults to Slack/Mattermost default webhook icon*
 
+``--no_html2text``
+    if the mail is formatted as html, don't try to convert it to markdown
+    formatted text
+
+``--no_ignore_tables``
+    if the mail is formatted as html and html2text is not disabled, do not
+    ignore html tables when formatting html to Markdown text
+
 ``-d``, ``--debug``
     increase debugging info
     can be provided up to three times

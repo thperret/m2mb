@@ -6,8 +6,8 @@ Introduction
 
 This program provides an asyncio smtp to Slack/Mattermost webhook bridge based
 on an `asyncio smtp implementation <https://aiosmtpd.readthedocs.io>`_. By
-default all mails transformed into messages are send the default channel
-configured by the webhook.
+default all mails transformed into messages are send to the default channel
+configured by the webhook. If mail is formatted as html, it will by default try to convert it to a Markdown formatted text using `html2text <http://alir3z4.github.io/html2text/>`_.
 
 Il is mainly designed to be run as a :doc:`docker service container <docker>`.
 

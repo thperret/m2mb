@@ -48,7 +48,8 @@ class M2MBHandler(AsyncMessage):
                                                server.default_channel)
         log.debug(f"send: {send}, channel: {channel}")
         if send:
-            text = await format_mail(server.loop, message)
+            text = await format_mail(server.loop, message, server.to_text,
+                                     server.ignore_tables)
             await server.loop.run_in_executor(None, send_to_mattermost,
                     server.webhook_url, text, channel, server.username,
                     server.icon_url)
@@ -68,7 +69,9 @@ class M2MBServer(SMTP):
                  default_channel=None,
                  username=None,
                  icon_url=None,
-                 sieve_file=None):
+                 sieve_file=None,
+                 to_text=True,
+                 ignore_tables=True):
         super().__init__(handler=M2MBHandler(),
                        data_size_limit=DATA_SIZE_DEFAULT,
                        enable_SMTPUTF8=False,
@@ -85,65 +88,9 @@ class M2MBServer(SMTP):
         self.username = username
         self.icon_url = icon_url
         self.rules = None
+        self.to_text = to_text
+        self.ignore_tables = ignore_tables
 
         if sieve_file:
             with open(sieve_file, newline="\r\n") as sfile:
                 self.rules = sifter.parser.parse_file(sfile)
-
-
-#  class M2MBChannel(SMTPChannel):
-    #  """Implements AUTH command."""
-
-    #  def __init__(self, server, conn, addr, data_size_limit=33554432, map=None,
-                 #  enable_SMTPUTF8=False, decode_data=False, auth_file=None):
-        #  super().__init__(server, conn, addr, data_size_limit=33554432, map=None,
-                         #  enable_SMTPUTF8=False, decode_data=False)
-        #  self.auth_file = auth_file
-
-    #  def smtp_AUTH(self, arg):
-        #  """smtp AUTH implementation.
-
-        #  For now this will always succeed."""
-        #  if self.auth_file is None:
-            #  self.push("235 Authentication successful.")
-
-
-#  class M2MBServer(SMTPServer):
-    #  """SMTP server class for bridge to Slack/Mattermost incoming webhook."""
-
-    #  channel_class = M2MBChannel
-
-    #  def __init__(self, localaddr, remoteaddr, webhook_url,
-                 #  data_size_limit=33554432, map=None, enable_SMTPUTF8=False,
-                 #  decode_data=False, default_channel=None, username=None,
-                 #  icon_url=None):
-        #  super().__init__(localaddr, remoteaddr, data_size_limit, map,
-                         #  enable_SMTPUTF8, decode_data)
-
-        #  self.webhook_url = webhook_url
-        #  self.default_channel = default_channel
-        #  self.username = username
-        #  self.icon_url = icon_url
-
-        #  self.rules = None
-
-    #  def process_message(self, peer, mailfrom, rcpttos, data, **kwargs):
-        #  """Process incoming mail to webhook"""
-
-        #  msg = email.message_from_bytes(data)
-        #  send, channel = evaluate_message(msg, self.rules, self.default_channel)
-        #  if send:
-            #  text = format_mail(msg)
-            #  try:
-                #  send_to_mattermost(self.webhook_url, text, channel,
-                                   #  self.username, self.icon_url)
-                #  print('OK')
-            #  except M2MBException as err:
-                #  print("Something went wrong when sending message")
-                #  print(err.args)
-
-    #  def load_filter(self, sieve_file):
-        #  """Loads sieve rules from file to apply to recieved mails."""
-
-        #  with open(sieve_file, encoding="utf-8") as sfile:
-            #  self.rules = sifter.parser.parse_file(sfile)

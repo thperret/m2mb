@@ -20,5 +20,10 @@ The ``M2MBHandler`` class inheritates from the ``AsyncMessage`` class of the
 (do not rely on it for :doc:`security <security>`) and handle message by
 tranforming the mail subject as a little markdown title and the mail body as the
 message send into the channel.
+The handler first process incoming message using ``prepare_message`` inherited
+class method, then ``evaluate_message`` [2]_ to determine if and where to send
+message, ``format_mail`` [2]_ to convert mail to Markdown formatted message and
+finally ``send_to_mattermost`` [2]_ the message.
 
 .. [1] If allowed by Slack/Mattermost configuration, see related documentation
+.. [2] See ``utils.py`` file

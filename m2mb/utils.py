@@ -18,8 +18,10 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 
 import json
 import logging
+import quopri
 
 import requests
+import html2text
 
 
 log = logging.getLogger(__name__)
@@ -70,18 +72,37 @@ async def evaluate_message(loop, message, rules, default_channel):
                 return False, None
 
 
-async def format_mail(loop, msg):
+async def format_mail(loop, msg, to_text=True, ignore_tables=True):
     """Format the mail to markdown
 
     Parameter
     ---------
     msg: email.message
+    to_text: bool, optional
+        Convert text/html mails to text/plain with markdown formatting
 
     Returns
     -------
     text: str
     """
-    text = f"### {msg['Subject']} \n {msg.get_payload()}"
+
+    h = html2text.HTML2Text()
+    h.ignore_tables = ignore_tables
+
+    body = None
+    for part in msg.walk():
+        if to_text and part.get_content_type() == "text/html":
+            body = h.handle(quopri.decodestring(part.get_payload()).decode())
+            break
+        elif part.get_content_type() == "text/plain":
+            body = quopri.decodestring(part.get_payload())
+            break
+
+    if not body:
+        log.error("Could not find text body mail")
+        body = quopri.decodestring(msg.as_string())
+
+    text = f"### {msg['Subject']} \n {body}"
     return text
 
 

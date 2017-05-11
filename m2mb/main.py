@@ -33,6 +33,13 @@ def parse_args():
     parser.add_argument('-d', '--debug', default=0, action='count',
                         help="""Increase debugging output.""")
     parser.add_argument('--hostname', default=None)
+    parser.add_argument('--no_html2text', default=True, action="store_false",
+                        dest="to_text",
+                        help="Explicitly disable Markdown text formatting")
+    parser.add_argument('--no_ignore_tables', default=True, action="store_false",
+                        dest="ignore_tables",
+                        help=("Explicitly use tables when formatting body html"
+                              " mail to Markdown text"))
 
     return parser.parse_args()
 
@@ -60,11 +67,11 @@ def main():
                            username=args.username,
                            icon_url=args.icon_url,
                            loop=loop,
-                           sieve_file = args.sieve_rules_file),
+                           sieve_file = args.sieve_rules_file,
+                           to_text=args.to_text,
+                           ignore_tables=args.ignore_tables),
         args.host, args.port))
     loop.add_signal_handler(signal.SIGINT, loop.stop)
-    #  if args.sieve_rules_file:
-        #  m2mb_server.load_filter(args.sieve_rules_file)
 
     log.info('Starting asyncio loop')
 
