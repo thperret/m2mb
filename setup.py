@@ -23,13 +23,13 @@ Python 3.""",
         #  "aiosmtpd",
         #  ],
     install_requires=[
-        "aiosmtpd==1.0a5+auth",
+        "aiosmtpd==1.0b1",
         "requests",
         "sifter==0.1",
         "html2text",
         ],
     dependency_links=[
-        "git+https://github.com/thperret/aiosmtpd.git@auth#egg=aiosmtpd-1.0a5+auth",
+        "git+https://github.com/thperret/aiosmtpd.git@auth#egg=aiosmtpd-1.0b1+auth",
         "git+https://github.com/thperret/sifter.git@python3#egg=sifter-0.1+py3",
         ],
     tests_require=[
