@@ -23,7 +23,7 @@ Python 3.""",
         #  "aiosmtpd",
         #  ],
     install_requires=[
-        "aiosmtpd==1.0a5",
+        "aiosmtpd==1.0a5+auth",
         "requests",
         "sifter==0.1",
         "html2text",
