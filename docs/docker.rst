@@ -40,7 +40,7 @@ Environment variables
     if the mail is formatted as html, don't try to convert it to markdown
     formatted text
 
-``NO_HTML2TEXT``
+``NO_IGNORE_TABLES``
     if the mail is formatted as html and html2text is not disabled, do not
     ignore html tables when formatting html to Markdown text
 

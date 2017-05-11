@@ -19,6 +19,14 @@ if [ -n "$ICON_URL" ]; then
     cmd_options="$cmd_options --icon_url $ICON_URL"
 fi
 
+if [ -n "$NO_HTML2TEXT" -a "$NO_HTML2TEXT" == "true" ]; then
+    cmd_options="$cmd_options --no_html2text"
+fi
+
+if [ -n "$NO_IGNORE_TABLES" -a "$NO_IGNORE_TABLES" == "true" ]; then
+    cmd_options="cmd_options --no_ignore_tables"
+fi
+
 if [ -e /rules.sieve ]; then
     cmd_options="$cmd_options --sieve_rules_file /rules.sieve"
 fi
