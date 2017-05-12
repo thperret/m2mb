@@ -45,7 +45,7 @@ Environment variables
     ignore html tables when formatting html to Markdown text
 
     .. [1] Username and icon overwrite must be allowed by Slack/Mattermost
-    configuration
+           configuration
 
 Volume definition
 +++++++++++++++++

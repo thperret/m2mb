@@ -36,8 +36,9 @@ Optional parameters
 ``--sieve_rules_files``
     the path to the file containing :doc:`sieve <sieve>` rules to filter
     incoming messages
-    **NB**: ending lines must be ``<CRLF>``
     *defaults to sending all mails to default channel*
+
+    .. note:: ending lines must be ``<CRLF>``
 
 ``--default_channel``
     default channel to send messages to

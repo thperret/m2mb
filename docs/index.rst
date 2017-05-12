@@ -23,6 +23,7 @@ tool that allowed us to recieve mails without to much hassle.
     sieve
     security
     docker
+    LICENSE
     
 .. include::
     ../NEWS.rst

@@ -50,7 +50,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'M2MB'
-copyright = '2017, Thomas Perret'
+copyright = '2017, Thomas Perret | Creative Commons CC-BY-SA 3.0'
 author = 'Thomas Perret'
 
 # The version info for the project you're documenting, acts as replacement for

@@ -11,15 +11,15 @@ use the ``fileinto`` sieve command, if you want to redirect the message to a
 specific user, use the ``redirect`` sieve command. You can also silently discard
 the mail by using the ``discard`` sieve command.
 
-**NB**: if no rules match the mail, the default command is to ``keep`` the mail
-which will be send to the ``default_channel``.
+.. note:: if no rules match the mail, the default command is to ``keep`` the
+          mail which will be send to the ``default_channel``.
 
-**NB2**: channels must be lower case, without non-ascii characters (remove them
-if any) and spaces replaced by hyphens ``-``.
+.. note:: channels must be lower case, without non-ascii characters (remove them
+          if any) and spaces replaced by hyphens ``-``.
 
-**NB3**: sieve standard requires that files are in dos specification ending
-lines (``CRLF`` or ``\r\r``). For information, Mac ending lines are ``CR`` (or
-``\r``) and unix ending lines are ``LF`` (or ``\n``).
+.. note:: sieve standard requires that files are in dos specification ending
+          lines (``CRLF`` or ``\r\r``). For information, Mac ending lines are
+          ``CR`` (or ``\r``) and unix ending lines are ``LF`` (or ``\n``).
 
 Commands
 ========
